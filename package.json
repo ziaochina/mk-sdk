@@ -1,0 +1,28 @@
+{
+  "name": "mk-sdk",
+  "version": "1.0.0",
+  "description": "sdk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaochina/mk-sdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ziaochina/mk-sdk/issues"
+  },
+  "homepage": "https://github.com/ziaochina/mk-sdk#readme",
+  "dependencies": {
+    "mk-app-loader": "^1.0.16",
+    "mk-component": "^1.0.52",
+    "mk-meta-engine": "^1.0.61",
+    "mk-utils": "^1.0.55",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  }
+}
