@@ -24,23 +24,15 @@ if (env === 'production' && compress) {
     )
 }
 
-//const extractCSS = new ExtractTextPlugin('mk-utils.' + (env === 'production' ? 'min.':'') +  'css')
-//plugins.push(extractCSS)
-
-
-const extractCSS = new ExtractTextPlugin('[name]-one-[hash:8].css');
-const extractLESS = new ExtractTextPlugin('[name]-two-[hash:8].css');
-
+const extractCSS = new ExtractTextPlugin('mk.' + (env === 'production' ? 'min.':'') +  'css');
 plugins.push(extractCSS)
-plugins.push(extractLESS)
-
 
 module.exports = {
     entry: ["./src/index.js"],
 
     output: {
         path: path.join(__dirname, "/dist/"),
-        library: "MKUtils",
+        library: "MK",
         libraryTarget: "umd"
     },
 
@@ -57,7 +49,7 @@ module.exports = {
         "react-redux": "ReactRedux",
         "immutable": 'Immutable',
         "prop-types": "PropTypes",
-        "echarts": 'Echarts'
+        "echarts": 'echarts'
     },
 
     module: {
@@ -69,7 +61,7 @@ module.exports = {
             })
         }, {
             test: /\.less$/,
-            use: extractLESS.extract({
+            use: extractCSS.extract({
                 fallback: "style-loader",
                 use: ['css-loader', 'less-loader']
             })
@@ -82,7 +74,7 @@ module.exports = {
             use: {
                 loader: 'url-loader',
                 options: {
-                    name: '[name].[hash:8].[ext]',
+                    name: '[name].[ext]',
                     limit: 8192
                 }
             }
