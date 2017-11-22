@@ -1,8 +1,8 @@
 {
   "name": "mk-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "sdk",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
     "build": "webpack --output-filename mk.js",
