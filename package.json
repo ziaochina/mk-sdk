@@ -4,9 +4,10 @@
   "description": "sdk",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel -d lib/ src/",
     "build": "webpack --output-filename mk.js",
-    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk.min.js"
+    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
