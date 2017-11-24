@@ -31,7 +31,7 @@ export default {
         appLoader.init(option)
     },
     registerApp: (app) => {
-        appLoader.registerApp(app)
+        appLoader.registerApp(app.name, app)
     },
     render: (appName, targetDomId) => {
         render(
