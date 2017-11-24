@@ -1,6 +1,6 @@
 {
   "name": "mk-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "sdk",
   "main": "lib/index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ziaochina/mk-sdk#readme",
   "dependencies": {
-    "mk-app-loader": "^1.0.18",
+    "mk-app-loader": "^1.0.19",
     "mk-component": "^1.0.52",
     "mk-meta-engine": "^1.0.61",
     "mk-utils": "^1.0.55",
