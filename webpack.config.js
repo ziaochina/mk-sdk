@@ -49,7 +49,8 @@ module.exports = {
         "react-redux": "ReactRedux",
         "immutable": 'Immutable',
         "prop-types": "PropTypes",
-        "echarts": 'echarts'
+        "echarts": 'echarts',
+        "seajs": 'seajs'
     },
 
     module: {

@@ -18,21 +18,75 @@ const defaultConfigOption = {
     modal: component.Modal 
 }
 
+function getDependencies(){
+    var dependencies = []
+    if(!window['React']){
+        dependencies.add('https://unpkg.com/react/umd/react.development.js')
+    }
+
+    if(!window['ReactDOM']){
+        dependencies.add('https://unpkg.com/react/umd/react.development.js')
+    }
+
+    if(!window['moment']){
+        dependencies.add('https://unpkg.com/moment/moment.js')
+    }
+
+    if(!window['_']){
+        dependencies.add('https://unpkg.com/lodash/lodash.js')
+    }
+
+    if(!window['Redux']){
+        dependencies.add('https://unpkg.com/redux/dist/redux.js')
+    }
+
+    if(!window['ReactRedux']){
+        dependencies.add('https://unpkg.com/react-redux/dist/react-redux.js')
+    }
+
+    if(!window['Immutable']){
+        dependencies.add('https://unpkg.com/immutable/dist/immutable.js')
+    }
+
+    if(!window['PropTypes']){
+        dependencies.add('https://unpkg.com/prop-types/prop-types.js')
+    }
+
+    if(!window['echarts']){
+        dependencies.add('https://unpkg.com/echarts/dist/echarts.min.js')
+    }
+
+    return dependencies
+}
+    
+
 export default {
     appLoader,
     utils,
     component,
     metaEngine,
-    config: (option)=>{
-        //配置元数据引擎
-        metaEngine.config(defaultConfigOption && option)
+    //准备依赖
+    ready:(cb)=>{
+        const deps = getDependencies()
+        if(deps.length> 0){
+            seajs.use(deps, cb)
+            return
+        }
+        cb()
     },
+    //初始化MK环境
     init: (option) => {
         appLoader.init(option)
     },
+    //配置元数据引擎
+    config: (option)=>{
+        metaEngine.config(defaultConfigOption && option)
+    },
+    //注册App
     registerApp: (app) => {
         appLoader.registerApp(app.name, app)
     },
+    //render
     render: (appName, targetDomId) => {
         render(
             <Provider store={window.__mk_store__}>
