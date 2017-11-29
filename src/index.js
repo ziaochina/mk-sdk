@@ -18,6 +18,28 @@ const defaultConfigOption = {
     modal: component.Modal 
 }
 
+//默认配置fetch
+utils.fetch.config({
+    mock: true,
+    after: (response, url) => {
+        if (response.result) {
+            if (response.token) {
+                fetch.config({ token: response.token })
+            }
+            return response.value
+        }
+        else {
+            component.Toast.error(response.error.message)
+            throw { url, response }
+        }
+    }
+})
+
+appLoader.init()
+
+metaEngine.config({...defaultConfigOption})
+
+
 export default {
     appLoader,
     utils,
@@ -29,7 +51,7 @@ export default {
     },
     //配置元数据引擎
     config: (option)=>{
-        metaEngine.config({...defaultConfigOption,...option})
+        metaEngine.config(option)
     },
     //注册App
     registerApp: (app) => {

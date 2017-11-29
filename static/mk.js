@@ -11,15 +11,15 @@ require.config({
         lodash: 'https://unpkg.com/lodash/lodash',
         immutable: 'https://unpkg.com/immutable/dist/immutable',
         echarts: 'https://unpkg.com/echarts/dist/echarts.min',
-        MK: 'mk/mk',
-        'MK.appLoader': 'mk/mk-app-loader',
-        'MK.utils': 'mk/mk-utils',
-        'MK.component': 'mk/mk-component',
-        'MK.metaEngine': 'mk/mk-meta-engine',
+        MK: 'https://unpkg.com/mk-sdk/dist/mk',
+        'MK.appLoader': 'https://unpkg.com/mk-sdk/dist/mk-app-loader',
+        'MK.utils': 'https://unpkg.com/mk-sdk/dist/mk-utils',
+        'MK.component': 'https://unpkg.com/mk-sdk/dist/mk-component',
+        'MK.metaEngine': 'https://unpkg.com/mk-sdk/dist/mk-meta-engine',
     },
     shim: {
         MK: {
-            deps: ['css!mk/mk.css']
+            deps: ['css!https://unpkg.com/mk-sdk/dist/mk.css']
         }
     },
     map: {
@@ -27,4 +27,9 @@ require.config({
             css: 'https://unpkg.com/require-css/css.min.js'
         }
     }
+})
+
+require(['MK'], function (mk) {
+    window.MK = mk
+    window['mkReady'] &&  window['mkReady'](mk)
 })

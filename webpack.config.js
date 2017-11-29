@@ -4,6 +4,7 @@ var env = process.env.NODE_ENV
 var compress = process.env.COMPRESS
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var plugins = []
 
@@ -27,11 +28,18 @@ if (env === 'production' && compress) {
 const extractCSS = new ExtractTextPlugin("mk.css");
 plugins.push(extractCSS)
 
+
+plugins.push(new CopyWebpackPlugin([{
+    context: './static',
+    from: '**/*',
+    to: ''
+}]))
+
 module.exports = {
     entry: ["./src/index.js"],
 
     output: {
-        path: path.join(__dirname, "/dist/internal"),
+        path: path.join(__dirname, "/dist"),
         library: "MK",
         libraryTarget: "umd"
     },

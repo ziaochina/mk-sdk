@@ -1,12 +1,12 @@
 {
   "name": "mk-sdk",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "sdk",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "build": "webpack --output-filename mk.js",
-    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk.min.js",
+    "build": "webpack --output-filename mk-core.js",
+    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk-core.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^4.2.3",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
