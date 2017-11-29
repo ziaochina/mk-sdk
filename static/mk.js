@@ -1,6 +1,5 @@
 
 require.config({
-    baseUrl: 'lib',
     paths: {
         react: 'https://unpkg.com/react/umd/react.development',
         'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development',
@@ -11,7 +10,7 @@ require.config({
         lodash: 'https://unpkg.com/lodash/lodash',
         immutable: 'https://unpkg.com/immutable/dist/immutable',
         echarts: 'https://unpkg.com/echarts/dist/echarts.min',
-        MK: 'https://unpkg.com/mk-sdk/dist/mk',
+        MK: 'https://unpkg.com/mk-sdk/dist/mk-core',
         'MK.appLoader': 'https://unpkg.com/mk-sdk/dist/mk-app-loader',
         'MK.utils': 'https://unpkg.com/mk-sdk/dist/mk-utils',
         'MK.component': 'https://unpkg.com/mk-sdk/dist/mk-component',
