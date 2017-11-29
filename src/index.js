@@ -18,7 +18,6 @@ const defaultConfigOption = {
     modal: component.Modal 
 }
 
-
 export default {
     appLoader,
     utils,
@@ -30,7 +29,7 @@ export default {
     },
     //配置元数据引擎
     config: (option)=>{
-        metaEngine.config(defaultConfigOption && option)
+        metaEngine.config({...defaultConfigOption,...option})
     },
     //注册App
     registerApp: (app) => {

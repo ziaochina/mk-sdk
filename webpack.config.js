@@ -31,7 +31,7 @@ module.exports = {
     entry: ["./src/index.js"],
 
     output: {
-        path: path.join(__dirname, "/dist/"),
+        path: path.join(__dirname, "/dist/internal"),
         library: "MK",
         libraryTarget: "umd"
     },
@@ -41,14 +41,49 @@ module.exports = {
     },
 
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM",
+        "react": {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
+        },
+        "react-dom": {
+            root: 'ReactDOM',
+            commonjs2: 'react-dom',
+            commonjs: 'react-dom',
+            amd: 'react-dom'
+        },
         "moment": "moment",
-        "lodash": "_",
-        "redux": "Redux",
-        "react-redux": "ReactRedux",
-        "immutable": 'Immutable',
-        "prop-types": "PropTypes",
+        "lodash":  {
+            root: '_',
+            commonjs2: 'lodash',
+            commonjs: 'lodash',
+            amd: 'lodash'
+        },
+        "redux": {
+            root: 'Redux',
+            commonjs2: 'redux',
+            commonjs: 'redux',
+            amd: 'redux'
+        },
+        "react-redux":  {
+            root: 'ReactRedux',
+            commonjs2: 'react-redux',
+            commonjs: 'react-redux',
+            amd: 'react-redux'
+        },
+        "immutable": {
+            root: 'Immutable',
+            commonjs2: 'immutable',
+            commonjs: 'immutable',
+            amd: 'immutable'
+        },
+        "prop-types":  {
+            root: 'PropTypes',
+            commonjs2: 'prop-types',
+            commonjs: 'prop-types',
+            amd: 'prop-types'
+        },
         "echarts": 'echarts'
     },
 
@@ -74,7 +109,7 @@ module.exports = {
             use: {
                 loader: 'url-loader',
                 options: {
-                    name: '[name].[ext]',
+                    name: '[name].[hash:8].[ext]',
                     limit: 8192
                 }
             }
