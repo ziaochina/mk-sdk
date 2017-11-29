@@ -18,7 +18,7 @@ require.config({
     },
     shim: {
         MK: {
-            deps: ['css!https://unpkg.com/mk-sdk/dist/mk.min.css']
+            deps: ['css!https://unpkg.com/mk-sdk/dist/mk.css']
         }
     },
     map: {
