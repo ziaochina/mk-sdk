@@ -1,16 +1,16 @@
 
 require.config({
     paths: {
-        react: 'https://unpkg.com/react/umd/react.development',
-        'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development',
-        'prop-types': 'https://unpkg.com/prop-types/prop-types',
-        redux: 'https://unpkg.com/redux/dist/redux',
-        'react-redux': 'https://unpkg.com/react-redux/dist/react-redux',
-        moment: 'https://unpkg.com/moment/moment',
-        lodash: 'https://unpkg.com/lodash/lodash',
-        immutable: 'https://unpkg.com/immutable/dist/immutable',
+        react: 'https://unpkg.com/react/umd/react.production.min',
+        'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.production.min',
+        'prop-types': 'https://unpkg.com/prop-types/prop-types.min',
+        redux: 'https://unpkg.com/redux/dist/redux.min',
+        'react-redux': 'https://unpkg.com/react-redux/dist/react-redux.min',
+        moment: 'https://unpkg.com/moment/min/moment.min',
+        lodash: 'https://unpkg.com/lodash/lodash.min',
+        immutable: 'https://unpkg.com/immutable/dist/immutable.min',
         echarts: 'https://unpkg.com/echarts/dist/echarts.min',
-        MK: 'https://unpkg.com/mk-sdk/dist/mk-core',
+        MK: 'https://unpkg.com/mk-sdk/dist/mk-core.min',
         'MK.appLoader': 'https://unpkg.com/mk-sdk/dist/mk-app-loader',
         'MK.utils': 'https://unpkg.com/mk-sdk/dist/mk-utils',
         'MK.component': 'https://unpkg.com/mk-sdk/dist/mk-component',
@@ -18,7 +18,7 @@ require.config({
     },
     shim: {
         MK: {
-            deps: ['css!https://unpkg.com/mk-sdk/dist/mk.css']
+            deps: ['css!https://unpkg.com/mk-sdk/dist/mk.min.css']
         }
     },
     map: {
