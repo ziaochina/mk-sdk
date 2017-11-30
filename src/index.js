@@ -24,7 +24,7 @@ utils.fetch.config({
     after: (response, url) => {
         if (response.result) {
             if (response.token) {
-                fetch.config({ token: response.token })
+                utils.fetch.config({ token: response.token })
             }
             return response.value
         }
