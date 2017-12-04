@@ -57,6 +57,7 @@ export default {
     registerApp: (app) => {
         appLoader.registerApp(app.name, app)
     },
+    createElement: React.createElement,
     //render
     render: (appName, targetDomId) => {
         render(
