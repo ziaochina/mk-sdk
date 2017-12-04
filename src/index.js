@@ -57,7 +57,16 @@ export default {
     registerApp: (app) => {
         appLoader.registerApp(app.name, app)
     },
+    //创建react元素
     createElement: React.createElement,
+    //加载App
+    loadApp: (name, props) => {
+        return appLoader.loadApp(name, {...props, store: __mk_store__})
+    },
+    //显示modal
+    showModal:(option)=>{
+        return component.Modal.show(option)
+    },
     //render
     render: (appName, targetDomId) => {
         render(
