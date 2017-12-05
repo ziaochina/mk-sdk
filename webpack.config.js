@@ -25,7 +25,7 @@ if (env === 'production' && compress) {
     )
 }
 
-const extractCSS = new ExtractTextPlugin("ccs/mk.css");
+const extractCSS = new ExtractTextPlugin("css/mk.css");
 plugins.push(extractCSS)
 
 
