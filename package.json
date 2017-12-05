@@ -1,12 +1,12 @@
 {
   "name": "mk-sdk",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "sdk",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "build": "webpack --output-filename mk-core.js",
-    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk-core.min.js",
+    "build": "webpack --output-filename mk-core.js && node script/download.js",
+    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk-core.min.js && node script/download.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
