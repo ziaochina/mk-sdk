@@ -25,7 +25,7 @@ if (env === 'production' && compress) {
     )
 }
 
-const extractCSS = new ExtractTextPlugin("mk.css");
+const extractCSS = new ExtractTextPlugin("ccs/mk.css");
 plugins.push(extractCSS)
 
 
@@ -117,7 +117,7 @@ module.exports = {
             use: {
                 loader: 'url-loader',
                 options: {
-                    name: '[name].[hash:8].[ext]',
+                    name: 'font/[name].[ext]',
                     limit: 8192
                 }
             }
