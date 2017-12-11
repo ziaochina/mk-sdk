@@ -40,7 +40,7 @@ appLoader.init()
 metaEngine.config({...defaultConfigOption})
 
 const appConfig = (apps, options) => {
-    Object.keys().forEach(key => {
+    Object.keys(apps).forEach(key => {
         const reg = new RegExp(`^${key == '*' ? '.*' : key}$`)
         Object.keys(apps).forEach(appName => {
             if (appName != 'config') {
