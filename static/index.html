@@ -42,11 +42,12 @@
             ], (root, login, portal) => {
                 var apps = {
                     [root.name]: root,
-                    [login.name]: logtin,
+                    [login.name]: login,
                     [portal.name]: portal
                 }
 
                 mk.registerApps(apps, {
+                    "*": apps,
                     [root.name]: { startAppName: login.name },
                     [login.name]: { goAfterLogin: { appName: portal.name } }
                 })
