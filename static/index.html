@@ -32,31 +32,18 @@
             })
             */
 
-            require([
+            mk.requireApps(require, [
                 'https://unpkg.com/mk-app-root/dist/mk-app-root.js',
                 'https://unpkg.com/mk-app-login/dist/mk-app-login.js',
                 'https://unpkg.com/mk-app-portal/dist/mk-app-portal.js',
-                'css!https://unpkg.com/mk-app-login/dist/mk-app-login.css',
-                'css!https://unpkg.com/mk-app-root/dist/mk-app-root.css',
-                'css!https://unpkg.com/mk-app-portal/dist/mk-app-portal.css'
-            ], (root, login, portal) => {
-                var apps = {
-                    [root.name]: root,
-                    [login.name]: login,
-                    [portal.name]: portal
-                }
-
-                mk.registerApps(apps, {
-                    "*": apps,
-                    [root.name]: { startAppName: login.name },
-                    [login.name]: { goAfterLogin: { appName: portal.name } }
-                })
-
-                mk.render(root.name, 'div1')
+            ], (apps) => {
+                apps['mk-app-root'].config({ startAppName: login.name })
+                apps['mk-app-login'].config({ goAfterLogin: { appName: portal.name } })
+                mk.render('mk-app-root', 'div1')
             })
         }
     </script>
-    <script src='mk.js'></script>
+    <script src='mk.debug.js'></script>
 </body>
 
 </html>

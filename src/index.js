@@ -8,14 +8,14 @@ import { Provider } from 'react-redux'
 import 'mk-component/dist/assets/style/index.less'
 
 //注册组件
-Object.keys(component).forEach(key=>{
+Object.keys(component).forEach(key => {
     metaEngine.componentFactory.registerComponent(key, component[key])
 })
 
 const defaultConfigOption = {
-    toast : component.Toast, //轻提示使用组件，mk-meta-engine使用
-    notification : component.Notification, //通知组件
-    modal: component.Modal 
+    toast: component.Toast, //轻提示使用组件，mk-meta-engine使用
+    notification: component.Notification, //通知组件
+    modal: component.Modal
 }
 
 //默认配置fetch
@@ -37,7 +37,7 @@ utils.fetch.config({
 
 appLoader.init()
 
-metaEngine.config({...defaultConfigOption})
+metaEngine.config({ ...defaultConfigOption })
 
 const appConfig = (apps, options) => {
     Object.keys(options).forEach(key => {
@@ -52,7 +52,6 @@ const appConfig = (apps, options) => {
     })
 }
 
-
 export default {
     appLoader,
     utils,
@@ -63,12 +62,26 @@ export default {
         appLoader.init(option)
     },
     //配置元数据引擎
-    config: (option)=>{
+    config: (option) => {
         metaEngine.config(option)
+    },
+    //加载多个app
+    requireApps: (requireFn, appUrls, cb) => {
+        if (!requireFn || !appUrls || appUrls.length == 0)
+            return
+        const appCount = appUrls.length
+        appUrls = appUrls.concat(appUrls.map(p => `css!${p.replace('.js', '.css')}`))
+
+        requireFn(appUrls, (...args) => {
+            const apps = args.slice(0, appCount).reduce((prev, curr) => ({ ...prev, [curr.name]: curr }), {})
+            appLoader.registerApps(apps)
+            appConfig(apps, { "*": { apps } })
+            cb(apps)
+        })
     },
     //注册App
     registerApp: (app, option) => {
-        appConfig({[app.name]: app, ...appLoader.getApps()}, {
+        appConfig({ [app.name]: app, ...appLoader.getApps() }, {
             [app.name]: option
         })
         appLoader.registerApp(app.name, app)
@@ -81,10 +94,10 @@ export default {
     createElement: React.createElement,
     //加载App
     loadApp: (name, props) => {
-        return appLoader.loadApp(name, {...props, store: __mk_store__})
+        return appLoader.loadApp(name, { ...props, store: __mk_store__ })
     },
     //显示modal
-    showModal:(option)=>{
+    showModal: (option) => {
         return component.Modal.show(option)
     },
     //render
@@ -95,7 +108,7 @@ export default {
             </Provider>,
             document.getElementById(targetDomId)
         )
-    } 
+    }
 }
 
 /*
