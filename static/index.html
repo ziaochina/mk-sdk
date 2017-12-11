@@ -1,57 +1,61 @@
 <html>
-    
-    <head>
-        <meta charset="utf-8">
-    </head>
-    
-    <body>
-        <div id='div1'></div>
-        <button type="button" onClick='aa()'>登录</button>
-        <script src='require.js'></script>
-        <script>
-    
-            aa = function () {
-                MK.showModal({
-                    title: '登录',
-                    width: 800,
-                    bodyStyle: { height: 600 },
-                    footer: null,
-                    //children: MK.createElement('div', null, 'rffff'),
-                    children: MK.loadApp('mk-app-root')
-                }).then(ret => {
-                    console.log(ret)
-                    debugger
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id='div1'></div>
+    <button type="button" onClick='aa()'>登录</button>
+    <script src='require.js'></script>
+    <script>
+
+        aa = function () {
+            MK.showModal({
+                title: '登录',
+                width: 800,
+                bodyStyle: { height: 600 },
+                footer: null,
+                //children: MK.createElement('div', null, 'rffff'),
+                children: MK.loadApp('mk-app-root')
+            }).then(ret => {
+                console.log(ret)
+                debugger
+            })
+        }
+        __mkAppPublicPath__ = '/apps'
+        window.mkReady = function (mk) {
+
+            /*
+            mk.utils.fetch.config({
+                mock: false
+            })
+            */
+
+            require([
+                'https://unpkg.com/mk-app-root/dist/mk-app-root.js',
+                'https://unpkg.com/mk-app-login/dist/mk-app-login.js',
+                'https://unpkg.com/mk-app-portal/dist/mk-app-portal.js',
+                'css!https://unpkg.com/mk-app-login/dist/mk-app-login.css',
+                'css!https://unpkg.com/mk-app-root/dist/mk-app-root.css',
+                'css!https://unpkg.com/mk-app-portal/dist/mk-app-portal.css'
+            ], (root, login, portal) => {
+                var apps = {
+                    [root.name]: root,
+                    [login.name]: logtin,
+                    [portal.name]: portal
+                }
+
+                mk.registerApps(apps, {
+                    [root.name]: { startAppName: login.name },
+                    [login.name]: { goAfterLogin: { appName: portal.name } }
                 })
-            }
-            __mkAppPublicPath__ = '/apps'
-            window.mkReady = function (mk) {
-    
-                /*
-                mk.utils.fetch.config({
-                    mock: false
-                })
-                */
-    
-                require([
-                    'https://unpkg.com/mk-app-root/dist/mk-app-root.js',
-                    'https://unpkg.com/mk-app-login/dist/mk-app-login.js',
-                    'https://unpkg.com/mk-app-portal/dist/mk-app-portal.js',
-                    'css!https://unpkg.com/mk-app-login/dist/mk-app-login.css',
-                    'css!https://unpkg.com/mk-app-root/dist/mk-app-root.css',
-                    'css!https://unpkg.com/mk-app-portal/dist/mk-app-portal.css'
-                ], (root, login, portal) => {
-                    //mk.registerApps([root,login, portal])
-                    root.config({ startAppName: 'mk-app-login' })
-                    mk.registerApp(root)
-                    login.config({ goAfterLogin: { appName: 'mk-app-portal' } })
-                    mk.registerApp(login)
-                    mk.registerApp(portal)
-                    // mk.render(app.name, 'div1')
-    
-                })
-            }
-        </script>
-        <script src='mk.js'></script>
-    </body>
-    
-    </html>
+
+                mk.render(root.name, 'div1')
+            })
+        }
+    </script>
+    <script src='mk.js'></script>
+</body>
+
+</html>

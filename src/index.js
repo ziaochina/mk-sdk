@@ -39,6 +39,19 @@ appLoader.init()
 
 metaEngine.config({...defaultConfigOption})
 
+const appConfig = (apps, options) => {
+    Object.keys().forEach(key => {
+        const reg = new RegExp(`^${key == '*' ? '.*' : key}$`)
+        Object.keys(apps).forEach(appName => {
+            if (appName != 'config') {
+                if (reg.test(appName)) {
+                    apps[appName].config(options[key])
+                }
+            }
+        })
+    })
+}
+
 
 export default {
     appLoader,
@@ -54,8 +67,15 @@ export default {
         metaEngine.config(option)
     },
     //注册App
-    registerApp: (app) => {
+    registerApp: (app, option) => {
+        appConfig({[app.name]: app, ...appLoader.getApps()}, {
+            [app.name]: option
+        })
         appLoader.registerApp(app.name, app)
+    },
+    registerApps: (apps, option) => {
+        appConfig(apps, option)
+        appLoader.registerApps(apps)
     },
     //创建react元素
     createElement: React.createElement,
