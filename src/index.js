@@ -69,14 +69,21 @@ export default {
     requireApps: (requireFn, appUrls, cb) => {
         if (!requireFn || !appUrls || appUrls.length == 0)
             return
+
+        appUrls.forEach(url=>{
+            var appName = url.substr(url.lastIndexOf('/')+1).replace('.js', ''),
+                pub = url.indexOf('/') ? url.substr(0, url.lastIndexOf('/')+1) : ''
+            window[`__pub_${appName}__`] = pub
+        })
+
         const appCount = appUrls.length
         appUrls = appUrls.concat(appUrls.map(p => `css!${p.replace('.js', '.css')}`))
 
         requireFn(appUrls, (...args) => {
             const apps = args.slice(0, appCount).reduce((prev, curr) => ({ ...prev, [curr.name]: curr }), {})
             appLoader.registerApps(apps)
-            appConfig(apps, { "*": { apps } })
-            cb(apps)
+            appConfig(apps, { "*": { ...appLoader.getApps(), ...apps } })
+            cb && cb(apps)
         })
     },
     //注册App

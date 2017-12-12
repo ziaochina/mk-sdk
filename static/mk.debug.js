@@ -10,15 +10,21 @@ require.config({
         lodash: 'https://unpkg.com/lodash/lodash',
         immutable: 'https://unpkg.com/immutable/dist/immutable',
         echarts: 'https://unpkg.com/echarts/dist/echarts',
-        MK: 'https://unpkg.com/mk-sdk/dist/mk-core',
-        'MK.appLoader': 'https://unpkg.com/mk-sdk/dist/mk-app-loader',
-        'MK.utils': 'https://unpkg.com/mk-sdk/dist/mk-utils',
-        'MK.component': 'https://unpkg.com/mk-sdk/dist/mk-component',
-        'MK.metaEngine': 'https://unpkg.com/mk-sdk/dist/mk-meta-engine',
+        //MK: 'https://unpkg.com/mk-sdk/dist/mk-core',
+        //'MK.appLoader': 'https://unpkg.com/mk-sdk/dist/mk-app-loader',
+        //'MK.utils': 'https://unpkg.com/mk-sdk/dist/mk-utils',
+        //'MK.component': 'https://unpkg.com/mk-sdk/dist/mk-component',
+        //'MK.metaEngine': 'https://unpkg.com/mk-sdk/dist/mk-meta-engine',
+        MK: 'mk-core',
+        'MK.appLoader': 'mk-app-loader',
+        'MK.utils': 'mk-utils',
+        'MK.component': 'mk-component',
+        'MK.metaEngine': 'mk-meta-engine',
     },
     shim: {
         MK: {
-            deps: ['css!https://unpkg.com/mk-sdk/dist/mk.css']
+            //deps: ['css!https://unpkg.com/mk-sdk/dist/mk.css']
+            deps: ['css!mk.css']
         }
     },
     map: {
