@@ -1,25 +1,27 @@
 
 require.config({
     paths: {
-        react: 'https://unpkg.com/react/umd/react.development',
+        'react': 'https://unpkg.com/react/umd/react.development',
         'react-dom': 'https://unpkg.com/react-dom/umd/react-dom.development',
         'prop-types': 'https://unpkg.com/prop-types/prop-types',
-        redux: 'https://unpkg.com/redux/dist/redux',
+        'redux': 'https://unpkg.com/redux/dist/redux',
         'react-redux': 'https://unpkg.com/react-redux/dist/react-redux',
-        moment: 'https://unpkg.com/moment/moment',
-        lodash: 'https://unpkg.com/lodash/lodash',
-        immutable: 'https://unpkg.com/immutable/dist/immutable',
-        echarts: 'https://unpkg.com/echarts/dist/echarts',
+        "moment": 'https://unpkg.com/moment@2.19.4/min/moment-with-locales',
+        'lodash': 'https://unpkg.com/lodash/lodash',
+        'immutable': 'https://unpkg.com/immutable/dist/immutable',
+        'echarts': 'https://unpkg.com/echarts/dist/echarts',
         //MK: 'https://unpkg.com/mk-sdk/dist/mk-core',
         //'MK.appLoader': 'https://unpkg.com/mk-sdk/dist/mk-app-loader',
         //'MK.utils': 'https://unpkg.com/mk-sdk/dist/mk-utils',
         //'MK.component': 'https://unpkg.com/mk-sdk/dist/mk-component',
         //'MK.metaEngine': 'https://unpkg.com/mk-sdk/dist/mk-meta-engine',
-        MK: 'mk-core',
+        'MK': 'mk-core',
         'MK.appLoader': 'mk-app-loader',
         'MK.utils': 'mk-utils',
         'MK.component': 'mk-component',
         'MK.metaEngine': 'mk-meta-engine',
+        'mk-aar-grid': 'https://unpkg.com/mk-aar-grid/dist/mk-aar-grid',
+        'mk-aar-form': 'https://unpkg.com/mk-aar-form/dist/mk-aar-form',
     },
     shim: {
         MK: {
@@ -31,7 +33,8 @@ require.config({
         '*': {
             css: 'https://unpkg.com/require-css/css.js'
         }
-    }
+    },
+    waitSeconds:0
 })
 
 require(['MK'], function (mk) {

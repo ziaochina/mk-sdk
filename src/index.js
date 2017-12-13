@@ -70,19 +70,19 @@ export default {
         if (!requireFn || !appUrls || appUrls.length == 0)
             return
 
-        appUrls.forEach(url=>{
-            var appName = url.substr(url.lastIndexOf('/')+1).replace('.js', ''),
-                pub = url.indexOf('/') ? url.substr(0, url.lastIndexOf('/')+1) : ''
+        appUrls.forEach(url => {
+            var appName = url.substr(url.lastIndexOf('/') + 1).replace(/(\.js)|(\.min\.js)/, ''),
+                pub = url.indexOf('/') ? url.substr(0, url.lastIndexOf('/') + 1) : ''
             window[`__pub_${appName}__`] = pub
         })
 
         const appCount = appUrls.length
-        appUrls = appUrls.concat(appUrls.map(p => `css!${p.replace('.js', '.css')}`))
+        appUrls = appUrls.concat(appUrls.map(p => `css!${p.replace(/(\.js)|(\.min\.js)/, '.css')}`))
 
         requireFn(appUrls, (...args) => {
             const apps = args.slice(0, appCount).reduce((prev, curr) => ({ ...prev, [curr.name]: curr }), {})
             appLoader.registerApps(apps)
-            appConfig(apps, { "*": { ...appLoader.getApps(), ...apps } })
+            appConfig(apps, { "*": { apps: { ...appLoader.getApps(), ...apps } } })
             cb && cb(apps)
         })
     },
@@ -110,9 +110,11 @@ export default {
     //render
     render: (appName, targetDomId) => {
         render(
-            <Provider store={window.__mk_store__}>
-                <appLoader.AppLoader name={appName} />
-            </Provider>,
+            component.localeWrapper('zh-CN', (
+                <Provider store={window.__mk_store__}>
+                    <appLoader.AppLoader name={appName} />
+                </Provider>
+            )),
             document.getElementById(targetDomId)
         )
     }

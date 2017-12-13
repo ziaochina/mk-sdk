@@ -13,6 +13,9 @@ var jss = [
     'https://unpkg.com/lodash/lodash.min.js',
     'https://unpkg.com/immutable/dist/immutable.min.js',
     'https://unpkg.com/echarts/dist/echarts.min.js',
+    'https://unpkg.com/echarts/dist/echarts.min.js',
+    'https://unpkg.com/mk-aar-grid/dist/mk-aar-grid.min.js',
+
     'https://unpkg.com/react/umd/react.development.js',
     'https://unpkg.com/react-dom/umd/react-dom.development.js',
     'https://unpkg.com/prop-types/prop-types.js',
@@ -22,6 +25,8 @@ var jss = [
     'https://unpkg.com/lodash/lodash.js',
     'https://unpkg.com/immutable/dist/immutable.js',
     'https://unpkg.com/echarts/dist/echarts.js',
+    'https://unpkg.com/mk-aar-grid/dist/mk-aar-grid.js',
+
     'https://unpkg.com/requirejs/require.js',
     'https://unpkg.com/require-css/css.js',
     'https://unpkg.com/require-css/css.min.js',

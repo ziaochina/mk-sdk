@@ -9,10 +9,12 @@
     <script src='require.js'></script>
     <script>
         window.mkReady = function (mk) {
-            mk.requireApps(require,[
-                'https://unpkg.com/mk-app-root/dist/mk-app-root.js',
-                'https://unpkg.com/mk-app-login/dist/mk-app-login.js',
-                'https://unpkg.com/mk-app-portal/dist/mk-app-portal.js',
+            mk.requireApps(require, [
+                'https://unpkg.com/mk-app-root/dist/mk-app-root.min.js',
+                'https://unpkg.com/mk-app-login/dist/mk-app-login.min.js',
+                'https://unpkg.com/mk-app-portal/dist/mk-app-portal.min.js',
+                'https://unpkg.com/mk-app-editable-table/dist/mk-app-editable-table.min.js',
+                'https://unpkg.com/mk-app-person-card/dist/mk-app-person-card.min.js',
             ], (apps) => {
                 var root = apps['mk-app-root'],
                     login = apps['mk-app-login'],
@@ -20,6 +22,130 @@
 
                 root.config({ startAppName: login.name })
                 login.config({ goAfterLogin: { appName: portal.name } })
+
+                portal.config({
+                    menu: [{
+                        key: '1',
+                        name: '首页',
+                        appName: 'mk-app-home',
+                        icon: 'home',
+                        isDefault: true
+                    }, {
+                        key: '3',
+                        name: '分析面板',
+                        appName: 'mk-app-dashboard-analysis',
+                        icon: 'pie-chart'
+                    }, {
+                        key: '2',
+                        name: 'apps',
+                        isExpand: true,
+                        icon: 'appstore',
+                        children: [{
+                            key: '201',
+                            name: '表格',
+                            children: [{
+                                key: '20101',
+                                name: '列表',
+                                appName: 'mk-app-person-list'
+                            }, {
+                                key: '20102',
+                                name: '复杂表格',
+                                appName: 'mk-app-complex-table'
+                            }, {
+                                key: '20103',
+                                name: '可编辑表格',
+                                appName: 'mk-app-editable-table'
+                            }, {
+                                key: '20104',
+                                name: '树表',
+                                appName: 'mk-app-tree-table'
+                            }, {
+                                key: '20105',
+                                name: '存货列表',
+                                appName: 'mk-app-stock-list'
+                            }, {
+                                key: '20106',
+                                name: '销售出库单列表',
+                                appName: 'mk-app-delivery-order-list'
+                            }, {
+                                key: '20107',
+                                name: '报表',
+                                appName: 'mk-app-report'
+                            }]
+
+                        }, {
+                            key: '202',
+                            name: '卡片',
+                            children: [{
+                                key: '20201',
+                                name: '卡片',
+                                appName: 'mk-app-person-card'
+                            }, {
+                                key: '20202',
+                                name: '单据',
+                                appName: 'mk-app-voucher'
+                            }, {
+                                key: '20203',
+                                name: '存货卡片',
+                                appName: 'mk-app-stock-card'
+                            }, {
+                                key: '20204',
+                                name: '销售出库单',
+                                appName: 'mk-app-delivery-order'
+                            }, {
+                                key: '20205',
+                                name: '凭证',
+                                appName: 'mk-app-proof-of-charge'
+                            }]
+
+                        }, {
+                            key: '203',
+                            name: '图形',
+                            children: [{
+                                key: '20301',
+                                name: '柱状图',
+                                appName: 'mk-app-bar-graph'
+                            }]
+                        }, {
+                            key: '208',
+                            name: '其他',
+                            children: [{
+                                key: '20801',
+                                name: '版本时间轴',
+                                appName: 'mk-app-versions'
+                            }, {
+                                key: '20802',
+                                name: '商品列表',
+                                appName: 'mk-app-product-list'
+                            }]
+                        }, {
+                            key: '209',
+                            name: '开发工具',
+                            children: [{
+                                key: '20901',
+                                name: '开发工具整体',
+                                appName: 'mk-app-devtools'
+                            }, {
+                                key: '20902',
+                                name: '元数据设计',
+                                appName: 'mk-app-meta-design'
+                            }, {
+                                key: '20903',
+                                name: 'webapi文档',
+                                appName: 'mk-app-apidoc'
+                            }, {
+                                key: '20904',
+                                name: 'action监控',
+                                appName: 'mk-app-trace-action'
+                            }, {
+                                key: '20905',
+                                name: '元数据、状态修改',
+                                appName: 'mk-app-hot-modify-app'
+                            }]
+
+                        }]
+                    }]
+                })
                 mk.render(root.name, 'app')
             })
         }
