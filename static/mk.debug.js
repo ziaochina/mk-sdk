@@ -1,32 +1,31 @@
 
 require.config({
-    baseUrl: __require_base_url__ || '',
     paths: {
-        'react': 'react.development',
-        'react-dom': 'react-dom.development',
-        'prop-types': 'prop-types',
-        'redux': 'redux',
-        'react-redux': 'react-redux',
-        "moment": 'moment-with-locales',
-        'lodash': 'lodash',
-        'immutable': 'immutable',
-        'echarts': 'echarts',
-        'MK': 'mk-core',
-        'MK.appLoader': 'mk-app-loader',
-        'MK.utils': 'mk-utils',
-        'MK.component': 'mk-component',
-        'MK.metaEngine': 'mk-meta-engine',
-        'mk-aar-grid': 'mk-aar-grid',
-        'mk-aar-form': 'mk-aar-form',
+        'react': __require_base_url__ + 'react.development',
+        'react-dom': __require_base_url__ + 'react-dom.development',
+        'prop-types': __require_base_url__ + 'prop-types',
+        'redux': __require_base_url__ + 'redux',
+        'react-redux': __require_base_url__ + 'react-redux',
+        "moment": __require_base_url__ + 'moment-with-locales',
+        'lodash': __require_base_url__ + 'lodash',
+        'immutable': __require_base_url__ + 'immutable',
+        'echarts': __require_base_url__ + 'echarts',
+        'MK': __require_base_url__ + 'mk-core',
+        'MK.appLoader': __require_base_url__ + 'mk-app-loader',
+        'MK.utils': __require_base_url__ + 'mk-utils',
+        'MK.component': __require_base_url__ + 'mk-component',
+        'MK.metaEngine': __require_base_url__ + 'mk-meta-engine',
+        'mk-aar-grid': __require_base_url__ + 'mk-aar-grid',
+        'mk-aar-form': __require_base_url__ + 'mk-aar-form',
     },
     shim: {
         MK: {
-            deps: ['css!mk.css']
+            deps: ['css!'+ __require_base_url__ +'mk.css']
         }
     },
     map: {
         '*': {
-            css: 'css.js'
+            css: __require_base_url__ + 'css.js'
         }
     },
     waitSeconds:0

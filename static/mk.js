@@ -1,32 +1,31 @@
 
 require.config({
-    baseUrl: __require_base_url__ || '',
     paths: {
-        'react': 'react.production.min',
-        'react-dom': 'react-dom.production.min',
-        'prop-types': 'prop-types.min',
-        'redux': 'redux.min',
-        'react-redux': 'react-redux.min',
-        "moment": 'moment-with-locales.min',
-        'lodash': 'lodash.min',
-        'immutable': 'immutable.min',
-        'echarts': 'echarts.min',
-        'MK': 'mk-core.min',
-        'MK.appLoader': 'mk-app-loader',
-        'MK.utils': 'mk-utils',
-        'MK.component': 'mk-component',
-        'MK.metaEngine': 'mk-meta-engine',
-        'mk-aar-grid': 'mk-aar-grid.min',
-        'mk-aar-form': 'mk-aar-form.min',
+        'react': __require_base_url__ + 'react.production.min',
+        'react-dom': __require_base_url__ + 'react-dom.production.min',
+        'prop-types': __require_base_url__ + 'prop-types.min',
+        'redux': __require_base_url__ + 'redux.min',
+        'react-redux': __require_base_url__ + 'react-redux.min',
+        "moment": __require_base_url__ + 'moment-with-locales.min',
+        'lodash': __require_base_url__ + 'lodash.min',
+        'immutable': __require_base_url__ + 'immutable.min',
+        'echarts': __require_base_url__ + 'echarts.min',
+        'MK': __require_base_url__ + 'mk-core.min',
+        'MK.appLoader': __require_base_url__ + 'mk-app-loader',
+        'MK.utils': __require_base_url__ + 'mk-utils',
+        'MK.component': __require_base_url__ + 'mk-component',
+        'MK.metaEngine': __require_base_url__ + 'mk-meta-engine',
+        'mk-aar-grid': __require_base_url__ + 'mk-aar-grid.min',
+        'mk-aar-form': __require_base_url__ + 'mk-aar-form.min',
     },
     shim: {
         MK: {
-            deps: ['css!mk.css']
+            deps: ['css!'+ __require_base_url__ +  'mk.css']
         }
     },
     map: {
         '*': {
-            css: 'css.min.js'
+            css: __require_base_url__ + 'css.min.js'
         }
     },
     waitSeconds : 0

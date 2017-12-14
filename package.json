@@ -1,6 +1,6 @@
 {
   "name": "mk-sdk",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "sdk",
   "main": "lib/index.js",
   "scripts": {
