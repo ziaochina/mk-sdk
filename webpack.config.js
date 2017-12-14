@@ -1,12 +1,10 @@
-var webpack = require("webpack");
-var path = require("path");
-var env = process.env.NODE_ENV
-var compress = process.env.COMPRESS
-
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-
-var plugins = []
+var webpack = require("webpack"),
+    path = require("path"),
+    env = process.env.NODE_ENV,
+    compress = process.env.COMPRESS,
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
+    plugins = []
 
 plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(env)
@@ -28,7 +26,6 @@ if (env === 'production' && compress) {
 const extractCSS = new ExtractTextPlugin("mk.css");
 plugins.push(extractCSS)
 
-
 plugins.push(new CopyWebpackPlugin([{
     context: './static',
     from: '**/*',
@@ -39,9 +36,11 @@ module.exports = {
     entry: ["./src/index.js"],
 
     output: {
-        path: path.join(__dirname, "/dist"),
-        library: "MK",
-        libraryTarget: "umd"
+        filename: env === 'production' ? 'mk-core.min.js': 'mk-core.js',
+        path: path.join(__dirname, `/dist${env === 'production' ? '': '/debug'}`),
+        library: 'MK',
+        libraryTarget: 'umd'
+        
     },
 
     resolve: {

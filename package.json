@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "build": "webpack --output-filename mk-core.js && node script/download.js",
-    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack --output-filename mk-core.min.js && node script/download.js",
+    "build": "webpack  && node script/download.js",
+    "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack && node script/download.js production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
