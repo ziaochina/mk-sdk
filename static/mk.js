@@ -1,3 +1,19 @@
+define('MK.appLoader', ['MK'], mk=>mk.appLoader)
+define('MK.utils', ['MK'], mk=>mk.utils)
+define('MK.component', ['MK'], mk=>mk.component)
+define('MK.metaEngine', ['MK'], mk=>mk.metaEngine)
+define('MK.metaEngine', ['MK'], mk=>mk.metaEngine)
+
+define('lodash.merge', ['lodash'], lodash=>lodash.merge)
+define('lodash.get', ['lodash'], lodash=>lodash.get)
+define('lodash.curry', ['lodash'], lodash=>lodash.curry)
+define('lodash.isequal', ['lodash'], lodash=>lodash.isequal)
+define('lodash.flow', ['lodash'], lodash=>lodash.flow)
+define('lodash.throttle', ['lodash'], lodash=>lodash.throttle)
+define('lodash.debounce', ['lodash'], lodash=>lodash.debounce)
+define('lodash.isarray', ['lodash'], lodash=>lodash.isarray)
+
+
 
 require.config({
     paths: {

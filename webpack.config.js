@@ -32,6 +32,8 @@ plugins.push(new CopyWebpackPlugin([{
     to: ''
 }]))
 
+plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+
 module.exports = {
     entry: ["./src/index.js"],
 
@@ -67,6 +69,14 @@ module.exports = {
             commonjs: 'lodash',
             amd: 'lodash'
         },
+        "lodash.merge": 'lodash.merge',
+        "lodash.get": 'lodash.get',
+        'lodash.curry': 'lodash.curry',
+        "lodash.isequal": 'lodash.isequal',
+        "lodash.flow": 'lodash.flow',
+        "lodash.throttle": 'lodash.throttle',
+        "lodash.debounce": 'lodash.debounce',
+        "lodash.isarray": 'lodash.isarray',
         "redux": {
             root: 'Redux',
             commonjs2: 'redux',
@@ -99,13 +109,13 @@ module.exports = {
             test: /\.css$/,
             use: extractCSS.extract({
                 fallback: "style-loader",
-                use: ['css-loader']
+                use: [{ loader: "css-loader", options: { minimize: true } } ]
             })
         }, {
             test: /\.less$/,
             use: extractCSS.extract({
                 fallback: "style-loader",
-                use: ['css-loader', 'less-loader']
+                use: [{ loader: "css-loader", options: { minimize: true } }, 'less-loader']
             })
         }, {
             test: /\.js?$/,

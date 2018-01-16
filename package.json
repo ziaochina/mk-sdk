@@ -7,6 +7,9 @@
     "compile": "babel -d lib/ src/",
     "build": "webpack  && node script/download.js",
     "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack && node script/download.js production",
+    "build-only": "webpack ",
+    "stats": "webpack --env production --profile --json > stats.json",
+    "analyzer": "webpack-bundle-analyzer stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,9 +25,9 @@
   "homepage": "https://github.com/ziaochina/mk-sdk#readme",
   "dependencies": {
     "mk-app-loader": "^1.0.22",
-    "mk-component": "^1.0.58",
+    "mk-component": "^1.0.62",
     "mk-meta-engine": "^1.0.61",
-    "mk-utils": "^1.0.56",
+    "mk-utils": "^1.0.61",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -39,11 +42,12 @@
     "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.3.0",
     "cross-env": "^5.1.1",
-    "css-loader": "^0.28.7",
+    "css-loader": "^0.28.8",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "less-loader": "^4.0.5",
+    "lodash-webpack-plugin": "^0.11.4",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
