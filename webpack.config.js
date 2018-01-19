@@ -33,6 +33,7 @@ plugins.push(new CopyWebpackPlugin([{
 }]))
 
 plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+//plugins.push(new webpack.optimize.DedupePlugin())
 
 module.exports = {
     entry: ["./src/index.js"],

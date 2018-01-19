@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/ziaochina/mk-sdk#readme",
   "dependencies": {
-    "mk-app-loader": "^1.0.22",
+    "mk-app-loader": "^1.0.23",
     "mk-component": "^1.0.62",
-    "mk-meta-engine": "^1.0.61",
+    "mk-meta-engine": "^1.0.62",
     "mk-utils": "^1.0.61",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
@@ -42,7 +42,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.3.0",
     "cross-env": "^5.1.1",
-    "css-loader": "^0.28.8",
+    "css-loader": "^0.28.9",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
