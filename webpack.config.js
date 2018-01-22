@@ -10,6 +10,8 @@ plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(env)
 }))
 
+plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+
 if (env === 'production' && compress) {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
@@ -32,8 +34,7 @@ plugins.push(new CopyWebpackPlugin([{
     to: ''
 }]))
 
-plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
-//plugins.push(new webpack.optimize.DedupePlugin())
+
 
 module.exports = {
     entry: ["./src/index.js"],
@@ -70,6 +71,7 @@ module.exports = {
             commonjs: 'lodash',
             amd: 'lodash'
         },
+        "lodash.keys": 'lodash.keys',
         "lodash.merge": 'lodash.merge',
         "lodash.get": 'lodash.get',
         'lodash.curry': 'lodash.curry',
@@ -78,6 +80,13 @@ module.exports = {
         "lodash.throttle": 'lodash.throttle',
         "lodash.debounce": 'lodash.debounce',
         "lodash.isarray": 'lodash.isarray',
+        "lodash.memoize": 'lodash.memoize',
+        "lodash/get": 'lodash.get',
+        "lodash/set": 'lodash.set',
+        "lodash/has": 'lodash.has',
+        "lodash/isArray": 'lodash.isArray',
+        "lodash/isSymbol": 'lodash.isSymbol',
+        "lodash/eq": 'lodash.eq',
         "redux": {
             root: 'Redux',
             commonjs2: 'redux',

@@ -8,6 +8,7 @@
     "build": "webpack  && node script/download.js",
     "build-min": "cross-env NODE_ENV=production COMPRESS=1 webpack && node script/download.js production",
     "build-only": "webpack ",
+    "build-only-min": "cross-env NODE_ENV=production COMPRESS=1 webpack",
     "stats": "webpack --env production --profile --json > stats.json",
     "analyzer": "webpack-bundle-analyzer stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -36,6 +37,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-import": "^1.6.3",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
