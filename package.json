@@ -27,7 +27,7 @@
   "dependencies": {
     "mk-app-loader": "^1.0.23",
     "mk-component": "^1.0.62",
-    "mk-meta-engine": "^1.0.62",
+    "mk-meta-engine": "^1.0.63",
     "mk-utils": "^1.0.61",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"

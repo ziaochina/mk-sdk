@@ -1,3 +1,4 @@
+
 export default {
     Menu: require('mk-component/lib/components/menu'),
     Icon: require('mk-component/lib/components/icon'),
@@ -102,4 +103,5 @@ export default {
     //Attachment: require('mk-component/lib/components/attachment'),
     //Movable: require('mk-component/lib/components/movable'),
     localeWrapper: require('mk-component/lib/components/localeWrapper'),
-}*/
+}
+*/
