@@ -49,6 +49,8 @@ export default {
     JSONTree: require('mk-component/lib/components/jsonTree'),
     Attachment: require('mk-component/lib/components/attachment'),
     Movable: require('mk-component/lib/components/movable'),
+    List: require('mk-component/lib/components/list'),
+    Avatar: require('mk-component/lib/components/movable'),
     localeWrapper: require('mk-component/lib/components/localeWrapper'),
 }
 /*

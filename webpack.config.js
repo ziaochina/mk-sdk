@@ -28,11 +28,12 @@ if (env === 'production' && compress) {
 const extractCSS = new ExtractTextPlugin("mk.css");
 plugins.push(extractCSS)
 
-plugins.push(new CopyWebpackPlugin([{
-    context: './static',
-    from: '**/*',
-    to: ''
-}]))
+
+//plugins.push(new CopyWebpackPlugin([{
+//    context: './static',
+//    from: '**/*',
+//    to: ''
+//}]))
 
 
 
