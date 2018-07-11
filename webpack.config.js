@@ -1,48 +1,34 @@
-var webpack = require("webpack"),
+const webpack = require("webpack"),
     path = require("path"),
-    env = process.env.NODE_ENV,
-    compress = process.env.COMPRESS,
-    ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    CopyWebpackPlugin = require('copy-webpack-plugin'),
-    plugins = []
+    env = process.env.NODE_ENV
 
-plugins.push(new webpack.DefinePlugin({
-    "process.env.NODE_ENV": JSON.stringify(env)
-}))
-
-plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
-
-if (env === 'production' && compress) {
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            output: {
-                "ascii_only": true
-            },
-            compressor: {
-                warnings: false
-            }
-        })
-    )
-}
-
-const extractCSS = new ExtractTextPlugin("mk.css");
-plugins.push(extractCSS)
-
-
-//plugins.push(new CopyWebpackPlugin([{
-//    context: './static',
-//    from: '**/*',
-//    to: ''
-//}]))
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 
 
 module.exports = {
+    mode: env || 'development',
+    optimization: {
+        minimizer: env === 'production' ? [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: false
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ] : []
+    },
+    devtool: env === 'production' ? undefined : 'source-map',
+    plugins: [
+        new MiniCssExtractPlugin({ filename: env === 'production' ? "mk.min.css" : "mk.css" })
+    ],
     entry: ["./src/index.js"],
 
     output: {
         filename: env === 'production' ? 'mk-core.min.js': 'mk-core.js',
-        path: path.join(__dirname, `/dist${env === 'production' ? '': '/debug'}`),
+        path: path.join(__dirname, `/dist${env === 'production' ? '/release': '/debug'}`),
         library: 'MK',
         libraryTarget: 'umd'
         
@@ -118,16 +104,10 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/,
-            use: extractCSS.extract({
-                fallback: "style-loader",
-                use: [{ loader: "css-loader", options: { minimize: true } } ]
-            })
+            use: [MiniCssExtractPlugin.loader, 'css-loader']
         }, {
             test: /\.less$/,
-            use: extractCSS.extract({
-                fallback: "style-loader",
-                use: [{ loader: "css-loader", options: { minimize: true } }, 'less-loader']
-            })
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
         }, {
             test: /\.js?$/,
             exclude: /node_modules/,
@@ -142,11 +122,6 @@ module.exports = {
                 }
             }
         }]
-    },
-
-    plugins: plugins
+    }
 }
 
-if (env === 'development') {
-    module.exports.devtool = 'source-map'
-}
