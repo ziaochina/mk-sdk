@@ -19,6 +19,9 @@
         window.mkReady = function (mk) {
             mk.utils.fetch.config({
                 mock: {{isMock}},
+                {{if token }}
+                token: '{{@token}}',
+                {{/if}}
                 after: function (response, url) {
                     if (response.result) {
                         if (response.token) {
@@ -30,7 +33,8 @@
                         mk.component.Toast.error(response.error.message)
                         throw { url, response }
                     }
-                }
+                },
+               
             })
             {{if preApp }}
             mk.requireApps(require, {{@preApp}}, function () {
