@@ -15,7 +15,7 @@
     <div id='app' style="width:100%;height: 100%"></div>
     <script src='require.min.js'></script>
     <script>
-        __require_base_url__ = ''
+        __require_base_url__ = '';
         window.mkReady = function (mk) {
             mk.utils.fetch.config({
                 mock: {{isMock}},
@@ -25,13 +25,13 @@
                 after: function (response, url) {
                     if (response.result) {
                         if (response.token) {
-                            mk.utils.fetch.config({ token: response.token })
+                            mk.utils.fetch.config({ token: response.token });
                         }
-                        return response.value
+                        return response.value;
                     }
                     else {
-                        mk.component.Toast.error(response.error.message)
-                        throw { url, response }
+                        mk.component.Toast.error(response.error.message);
+                        throw { url:url, response:response };
                     }
                 },
                
@@ -41,11 +41,11 @@
             {{/if}}
                 mk.init({
                     requireFn: require,
-                    {{@app}}
-                })
-                mk.render('{{@appName}}', 'app')
+                    appsMap:{{@app}}
+                });
+                mk.render('{{@appName}}', 'app');
             {{if preApp}}
-            }
+            })
             {{/if}}
         }
     </script>

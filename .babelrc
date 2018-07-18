@@ -2,13 +2,18 @@
   "presets": [
     ["env"],
     ["stage-0"],
-    ["react"],
+    ["react"]
   ],
   "plugins": [
-    ["transform-runtime",["import", {
+     ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+  }],["import", {
       "libraryName": "antd",
       "libraryDirectory": "es"
-    }]],
-    ["add-module-exports"],
+    }],
+    ["add-module-exports"]
   ]
 }
